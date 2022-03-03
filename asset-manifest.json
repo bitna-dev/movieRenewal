@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/movieRenewal/static/css/main.5a8fc90f.css",
+    "main.js": "/movieRenewal/static/js/main.c36fea1c.js",
+    "index.html": "/movieRenewal/index.html",
+    "main.5a8fc90f.css.map": "/movieRenewal/static/css/main.5a8fc90f.css.map",
+    "main.c36fea1c.js.map": "/movieRenewal/static/js/main.c36fea1c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a8fc90f.css",
+    "static/js/main.c36fea1c.js"
+  ]
+}
