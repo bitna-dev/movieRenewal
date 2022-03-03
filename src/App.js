@@ -1,28 +1,50 @@
+import axios from "axios";
 import React from "react";
-import Food from "./Food";
+import Movie from "./Movie"
+import "./App.css"
 
-
-const foodILike = [
-  {
-  id:1,
-  name: "Kimchi",
-  image: "https://kstory365.files.wordpress.com/2015/01/kimchi-01-cabbage.jpg",
-  raiting: 4.5
-  },
-  {
-  id:2,
-  name: "samgyetang",
-  image: "https://img.seoul.co.kr//img/upload/2019/07/25/SSI_20190725184016.jpg",
-  raiting: 5
+class App extends React.Component{
+  state = {
+    isLoading: true,
+    movies:[]
   }
-]
-
-function App() {
-  return (
-    <div className="App">
-      <Food food={foodILike} />
-    </div>
-  );
+  componentDidMount(){  
+    this.getMovies();
+  }
+  getMovies = async() => {
+    const {
+      data: {
+        data: {movies}
+      }
+    } = await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=raiting");
+    this.setState({movies, isLoading:false});
+  }
+  render(){
+    const {isLoading, movies} = this.state;
+    return (<section className="container">
+      {isLoading ? (
+        <div className="loader">
+          <span className="loader__text">Loading...</span>
+        </div>
+      ) : <div className="movies">
+            {movies.map((movie) => {
+                return (<Movie key={movie.id} 
+                  id={movie.id} 
+                  year={movie.year} 
+                  title={movie.title} 
+                  summary={movie.summary} 
+                  url={movie.url} 
+                  rating={movie.rating}
+                  genres={movie.genres}
+                />)})
+            }
+          </div>
+      }
+    </section>)
+  
+  }
 }
 
+
 export default App;
+
