@@ -33,7 +33,7 @@ class App extends React.Component{
                   year={movie.year} 
                   title={movie.title} 
                   summary={movie.summary} 
-                  url={movie.url} 
+                  url={movie.medium_cover_image} 
                   rating={movie.rating}
                   genres={movie.genres}
                 />)})
